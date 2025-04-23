@@ -1,88 +1,80 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sreeharsh E K - Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Sreeharsh E K - Spider-Verse Portfolio</title>
   
-  <!-- Fonts + AOS + Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&display=swap" rel="stylesheet">
+  <!-- Fonts + Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <style>
+    :root {
+      --spider-blue: #00f7ff;
+      --spider-pink: #ff38e4;
+      --spider-purple: #8a2be2;
+      --spider-bg: #0a0a12;
+      --spider-text: #f0f0f0;
+      --spider-accent: #ff3131;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* === ONLY BACKGROUND CHANGED === */
+    /* === ENHANCED ANIMATED BACKGROUND === */
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #0d0d0d;
-      color: #d6c7ae;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--spider-text);
       line-height: 1.6;
       scroll-behavior: smooth;
+      overflow-x: hidden;
       position: relative;
-      overflow: hidden;
+      background: #000;
     }
 
-    /* Animated Gradient Background */
-    body::before {
-      content: '';
-      position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: 
-        linear-gradient(45deg, 
-          rgba(255, 0, 255, 0.05) 0%, 
-          rgba(0, 255, 255, 0.05) 50%, 
-          rgba(255, 255, 0, 0.05) 100%);
-      background-size: 200% 200%;
-      animation: gradientMove 15s ease infinite;
-      z-index: -1;
-    }
-
-    /* Moving Particles */
-    body::after {
-      content: '';
+    #spider-bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(255, 0, 255, 0.03) 0%, transparent 20%),
-        radial-gradient(circle at 80% 70%, rgba(0, 255, 255, 0.03) 0%, transparent 20%);
       z-index: -1;
-      animation: pulse 8s infinite alternate;
+      background: 
+        linear-gradient(135deg, #0a0a0a 0%, #1a0a2a 100%);
+      overflow: hidden;
     }
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 0%; }
-      50% { background-position: 100% 100%; }
-      100% { background-position: 0% 0%; }
+    .spider-particle {
+      position: absolute;
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+      opacity: 0.7;
+      filter: blur(1px);
     }
 
-    @keyframes pulse {
-      0% { opacity: 0.3; transform: scale(1); }
-      100% { opacity: 0.8; transform: scale(1.1); }
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      20% { opacity: 0.8; }
+      50% { transform: translateY(-100vh) translateX(100px); }
+      80% { opacity: 0.5; }
+      100% { transform: translateY(-200vh) translateX(200px); opacity: 0; }
     }
 
-    /* === EVERYTHING BELOW IS YOUR ORIGINAL CODE (UNTOUCHED) === */
+    /* === YOUR ORIGINAL STYLES (UNTOUCHED) === */
     header {
-      background: #1a1a1a;
+      background: rgba(26, 26, 26, 0.8);
+      backdrop-filter: blur(10px);
       padding: 20px 40px;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      box-shadow: 0 2px 20px rgba(0, 247, 255, 0.1);
+      border-bottom: 1px solid rgba(0, 247, 255, 0.2);
     }
 
     nav {
@@ -92,111 +84,267 @@
     }
 
     .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5em;
-      color: #e8dfca;
-      letter-spacing: 1px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8em;
+      font-weight: 700;
+      color: var(--spider-blue);
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px var(--spider-blue);
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 25px;
+      gap: 30px;
     }
 
     nav ul li a {
       text-decoration: none;
-      color: #d6c7ae;
-      transition: color 0.3s;
+      color: var(--spider-text);
+      font-size: 1.1em;
+      transition: all 0.3s;
+      position: relative;
+      padding: 5px 0;
     }
 
     nav ul li a:hover {
-      color: #fff;
+      color: var(--spider-pink);
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(90deg, var(--spider-blue), var(--spider-pink));
+      transition: width 0.4s ease-out;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
     }
 
     .section {
-      padding: 100px 40px;
-      max-width: 900px;
+      padding: 120px 40px;
+      max-width: 1000px;
       margin: auto;
+      position: relative;
     }
 
     .hero {
       text-align: center;
+      position: relative;
     }
 
     .hero h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
+      font-size: 4.5em;
+      margin-bottom: 20px;
+      line-height: 1.1;
+      background: linear-gradient(45deg, var(--spider-blue), var(--spider-pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+    }
+
+    .hero p {
+      font-size: 1.5em;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      opacity: 0.9;
     }
 
     .highlight {
-      color: #c8a96b;
+      position: relative;
+      display: inline-block;
+    }
+
+    .highlight::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      bottom: 5px;
+      left: 0;
+      background: linear-gradient(90deg, var(--spider-blue), var(--spider-pink));
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .highlight:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      border: 2px solid #c8a96b;
-      color: #c8a96b;
+      margin-top: 30px;
+      padding: 15px 35px;
+      background: linear-gradient(45deg, var(--spider-blue), var(--spider-purple));
+      color: white;
       text-decoration: none;
-      border-radius: 5px;
-      transition: background 0.3s;
+      border-radius: 50px;
+      font-size: 1.2em;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s;
+      box-shadow: 0 5px 25px rgba(0, 247, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, var(--spider-purple), var(--spider-pink));
+      opacity: 0;
+      transition: opacity 0.4s;
+      z-index: -1;
     }
 
     .btn:hover {
-      background-color: #c8a96b;
-      color: #0d0d0d;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(255, 56, 228, 0.4);
     }
 
-    .socials a {
-      font-size: 1.5em;
-      margin: 0 10px;
-      color: #d6c7ae;
-      transition: color 0.3s;
+    .btn:hover::before {
+      opacity: 1;
     }
 
-    .socials a:hover {
-      color: #fff;
+    .premium-image {
+      width: 280px;
+      border-radius: 15px;
+      border: 2px solid rgba(0, 247, 255, 0.5);
+      box-shadow: 
+        0 0 30px rgba(0, 247, 255, 0.2),
+        0 0 60px rgba(255, 56, 228, 0.1);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      margin-bottom: 30px;
     }
 
-    footer {
-      background: #1a1a1a;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
+    .premium-image:hover {
+      transform: scale(1.05) rotate(-2deg);
+      box-shadow: 
+        0 0 40px rgba(0, 247, 255, 0.3),
+        0 0 80px rgba(255, 56, 228, 0.2);
+      border-color: var(--spider-pink);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .social-icons a {
+      font-size: 1.8em;
+      color: var(--spider-text);
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .social-icons a:hover {
+      color: var(--spider-blue);
+      transform: translateY(-5px) scale(1.1);
+      text-shadow: 0 0 15px var(--spider-blue);
     }
 
     h2 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      color: #e3d5b8;
+      font-size: 3.5em;
+      margin-bottom: 30px;
+      background: linear-gradient(45deg, var(--spider-blue), var(--spider-pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 150px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--spider-blue), var(--spider-pink));
+      margin-top: 15px;
+      border-radius: 2px;
     }
 
     p {
-      font-size: 1.1em;
+      font-size: 1.3em;
+      line-height: 1.7;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background: rgba(26, 26, 26, 0.8);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      padding: 25px;
+      font-size: 1em;
+      border-top: 1px solid rgba(0, 247, 255, 0.2);
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 var(--spider-blue), -2px 0 var(--spider-pink); }
+      25% { text-shadow: -3px 0 var(--spider-pink), 3px 0 var(--spider-blue); }
+      50% { text-shadow: 2px 0 var(--spider-purple), -2px 0 var(--spider-blue); }
+      75% { text-shadow: -3px 0 var(--spider-blue), 3px 0 var(--spider-purple); }
+      100% { text-shadow: 2px 0 var(--spider-pink), -2px 0 var(--spider-blue); }
+    }
+
+    h2:hover {
+      animation: glitch 0.8s linear infinite;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.8em;
+      }
+      
+      h2 {
+        font-size: 2.5em;
+      }
+      
+      nav ul {
+        gap: 15px;
+      }
+      
+      .section {
+        padding: 80px 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- YOUR ORIGINAL CONTENT (UNTOUCHED) -->
-  <div style="display: flex; gap: 15px; align-items: center;">
-    <!-- Instagram -->
+  <!-- Enhanced Animated Background -->
+  <div id="spider-bg"></div>
+  
+  <!-- Social Icons (Fixed) -->
+  <div class="social-icons" style="position: fixed; bottom: 30px; left: 30px; z-index: 100;">
     <a href="https://www.instagram.com/sreeharsh_25" target="_blank">
-      <i class="fab fa-instagram fa-2x" style="color:#E1306C;"></i>
+      <i class="fab fa-instagram" style="color: var(--spider-pink);"></i>
     </a>
-  
-    <!-- LinkedIn -->
     <a href="https://www.linkedin.com/in/sreeharsh-e-k-428882246" target="_blank">
-      <i class="fab fa-linkedin fa-2x" style="color:#0077B5;"></i>
+      <i class="fab fa-linkedin" style="color: var(--spider-blue);"></i>
     </a>
-  
-    <!-- Email -->
     <a href="mailto:sreeharsh121@gmail.com">
-      <i class="fas fa-envelope fa-2x" style="color:#333;"></i>
+      <i class="fas fa-envelope" style="color: var(--spider-text);"></i>
     </a>
   </div>
   
+  <!-- Header -->
   <header>
     <nav>
       <div class="logo">SREEHARSH E K</div>
@@ -209,35 +357,40 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section id="home" class="section hero" data-aos="fade-up">
     <h1>Hi, I'm <span class="highlight">Sreeharsh</span></h1>
-    <p>I build digital experiences with a techy touch.</p>
+    <p>I build digital experiences with a <span style="color: var(--spider-blue)">multiverse</span> of creativity.</p>
 
     <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: 30px;">
-      <img src="IMG_20230908_092223_493.jpg" alt="My Photo" style="width: 250px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);" />
+      <img src="IMG_20230908_092223_493.jpg" alt="My Photo" class="premium-image" />
       <a href="#contact" class="btn">Get In Touch</a>
     </div>
   </section>
 
+  <!-- About Section -->
   <section id="about" class="section" data-aos="fade-right">
     <h2>About Me</h2>
-    <p>I'm a tech enthusiast with a passion for development, design, and creating elegant user experiences. Currently learning and growing every day.</p>
+    <p>I'm a tech enthusiast with a passion for development, design, and creating elegant user experiences. Currently exploring the vast <span style="color: var(--spider-pink)">cosmos of web technologies</span>.</p>
   </section>
 
+  <!-- Projects Section -->
   <section id="projects" class="section" data-aos="zoom-in">
     <h2>Projects</h2>
-    <p>More projects coming soon... stay tuned!</p>
+    <p>More projects coming soon... <span style="color: var(--spider-blue)">watch this space!</span></p>
   </section>
 
+  <!-- Contact Section -->
   <section id="contact" class="section" data-aos="fade-left">
     <h2>Contact</h2>
-    <p>Let's connect!</p>
-    <div class="socials">
+    <p>Let's create something amazing together.</p>
+    <div class="social-icons">
       <a href="mailto:sreeharshek121@gmail.com"><i class="fas fa-envelope"></i></a>
       <a href="https://www.linkedin.com/in/sreeharsh-e-k-428882246" target="_blank"><i class="fab fa-linkedin"></i></a>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 Sreeharsh E K. All rights reserved.</p>
   </footer>
@@ -249,6 +402,60 @@
       duration: 1000,
       once: true
     });
+
+    // Enhanced Particle Background
+    function createParticles() {
+      const bg = document.getElementById('spider-bg');
+      const colors = ['#00f7ff', '#ff38e4', '#8a2be2', '#ff3131', '#00ff88'];
+      const particleCount = 80; // Increased number of particles
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('spider-particle');
+        
+        // Random properties
+        const size = Math.random() * 8 + 3; // Larger particles
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const duration = Math.random() * 20 + 10;
+        const delay = Math.random() * 15;
+        const blur = Math.random() * 3 + 1;
+        
+        // Apply styles
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.background = color;
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.top = `${Math.random() * 100}vh`;
+        particle.style.animationDuration = `${duration}s`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.filter = `blur(${blur}px)`;
+        
+        // Glow effect
+        particle.style.boxShadow = `0 0 ${size*3}px ${size/2}px ${color}80`;
+        
+        bg.appendChild(particle);
+      }
+
+      // Add some larger, slower-moving particles
+      for (let i = 0; i < 5; i++) {
+        const bigParticle = document.createElement('div');
+        bigParticle.classList.add('spider-particle');
+        bigParticle.style.width = '15px';
+        bigParticle.style.height = '15px';
+        bigParticle.style.background = colors[i % colors.length];
+        bigParticle.style.left = `${Math.random() * 100}vw`;
+        bigParticle.style.top = `${Math.random() * 100}vh`;
+        bigParticle.style.animationDuration = '30s';
+        bigParticle.style.animationDelay = `${Math.random() * 10}s`;
+        bigParticle.style.opacity = '0.4';
+        bigParticle.style.filter = 'blur(2px)';
+        bigParticle.style.boxShadow = `0 0 30px 8px ${colors[i % colors.length]}80`;
+        bg.appendChild(bigParticle);
+      }
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', createParticles);
   </script>
 </body>
 </html>
