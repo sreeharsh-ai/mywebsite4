@@ -3,18 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sreeharsh E K - Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Sreeharsh E K - Spider-Verse Portfolio</title>
   
-  
-  <!-- Fonts + AOS + Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&display=swap" rel="stylesheet">
+  <!-- Fonts + Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <style>
+    :root {
+      --spider-pink: #ff00ff;
+      --spider-blue: #00ffff;
+      --spider-red: #ff3131;
+      --spider-purple: #8a2be2;
+      --spider-bg: #0d0d0d;
+      --spider-text: #e8e6e3;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -22,20 +27,25 @@
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #0d0d0d;
-      color: #d6c7ae;
+      font-family: 'Bangers', cursive;
+      background-color: var(--spider-bg);
+      color: var(--spider-text);
       line-height: 1.6;
       scroll-behavior: smooth;
+      letter-spacing: 1px;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 0, 255, 0.03) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.03) 0%, transparent 20%);
     }
 
     header {
-      background: #1a1a1a;
+      background: linear-gradient(90deg, #1a1a1a, #2a0a2a);
       padding: 20px 40px;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      box-shadow: 0 2px 15px rgba(138, 43, 226, 0.3);
+      border-bottom: 2px dashed var(--spider-blue);
     }
 
     nav {
@@ -45,10 +55,13 @@
     }
 
     .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5em;
-      color: #e8dfca;
-      letter-spacing: 1px;
+      font-family: 'Rubik Wet Paint', cursive;
+      font-size: 1.8em;
+      color: var(--spider-blue);
+      letter-spacing: 2px;
+      text-shadow: 
+        3px 3px 0 var(--spider-purple),
+        5px 5px 0 #000;
     }
 
     nav ul {
@@ -59,18 +72,50 @@
 
     nav ul li a {
       text-decoration: none;
-      color: #d6c7ae;
-      transition: color 0.3s;
+      color: var(--spider-text);
+      font-size: 1.2em;
+      transition: all 0.3s;
+      position: relative;
     }
 
     nav ul li a:hover {
-      color: #fff;
+      color: var(--spider-pink);
+      text-shadow: 0 0 10px var(--spider-pink);
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--spider-blue);
+      transition: width 0.3s;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
     }
 
     .section {
       padding: 100px 40px;
       max-width: 900px;
       margin: auto;
+      position: relative;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://www.transparenttextures.com/patterns/cartographer.png');
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: -1;
     }
 
     .hero {
@@ -78,74 +123,201 @@
     }
 
     .hero h1 {
-      font-size: 3em;
+      font-size: 4em;
       margin-bottom: 10px;
+      line-height: 1;
     }
 
     .highlight {
-      color: #c8a96b;
+      color: var(--spider-pink);
+      position: relative;
+      display: inline-block;
+    }
+
+    .highlight::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      bottom: 5px;
+      left: 0;
+      background: linear-gradient(90deg, var(--spider-pink), var(--spider-blue));
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s;
+    }
+
+    .highlight:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
     }
 
     .btn {
       display: inline-block;
       margin-top: 20px;
       padding: 12px 24px;
-      border: 2px solid #c8a96b;
-      color: #c8a96b;
+      background: linear-gradient(45deg, var(--spider-purple), var(--spider-pink));
+      color: white;
       text-decoration: none;
-      border-radius: 5px;
-      transition: background 0.3s;
+      border-radius: 30px;
+      font-size: 1.1em;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+      position: relative;
+      overflow: hidden;
     }
 
     .btn:hover {
-      background-color: #c8a96b;
-      color: #0d0d0d;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(138, 43, 226, 0.6);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
     }
 
     .socials a {
-      font-size: 1.5em;
-      margin: 0 10px;
-      color: #d6c7ae;
-      transition: color 0.3s;
+      font-size: 1.8em;
+      margin: 0 15px;
+      color: var(--spider-text);
+      transition: all 0.3s;
+      display: inline-block;
     }
 
     .socials a:hover {
-      color: #fff;
+      color: var(--spider-blue);
+      transform: translateY(-5px) scale(1.1);
     }
 
     footer {
-      background: #1a1a1a;
+      background: linear-gradient(90deg, #1a1a1a, #2a0a2a);
       text-align: center;
       padding: 20px;
-      font-size: 0.9em;
+      font-size: 1em;
+      border-top: 2px dashed var(--spider-pink);
     }
 
     h2 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      color: #e3d5b8;
+      font-size: 3em;
+      margin-bottom: 30px;
+      color: var(--spider-blue);
+      text-shadow: 3px 3px 0 var(--spider-purple);
+      letter-spacing: 2px;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--spider-pink), var(--spider-blue));
+      margin-top: 10px;
     }
 
     p {
-      font-size: 1.1em;
+      font-size: 1.3em;
+      line-height: 1.7;
+    }
+
+    /* Spider-Verse specific elements */
+    .spider-spray {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-family: 'Rubik Wet Paint', cursive;
+      color: white;
+      font-size: 1.5rem;
+      transform: rotate(-10deg);
+      text-shadow: 
+        2px 2px 0 var(--spider-purple),
+        4px 4px 0 #000;
+      opacity: 0.8;
+      z-index: 100;
+    }
+
+    .premium-image {
+      border: 3px solid var(--spider-blue);
+      box-shadow: 
+        0 0 20px var(--spider-pink),
+        0 0 40px rgba(0, 255, 255, 0.3);
+      transition: all 0.5s;
+    }
+
+    .premium-image:hover {
+      transform: scale(1.05);
+      box-shadow: 
+        0 0 30px var(--spider-pink),
+        0 0 60px rgba(0, 255, 255, 0.5);
+    }
+
+    /* Glitch effect for section headings */
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-3px, 3px); }
+      40% { transform: translate(-3px, -3px); }
+      60% { transform: translate(3px, 3px); }
+      80% { transform: translate(3px, -3px); }
+      100% { transform: translate(0); }
+    }
+
+    h2:hover {
+      animation: glitch 0.5s linear;
+      color: var(--spider-pink);
+    }
+
+    /* Comic dots background */
+    .comic-dot {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.05;
+      z-index: -1;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5em;
+      }
+      
+      h2 {
+        font-size: 2em;
+      }
+      
+      nav ul {
+        gap: 15px;
+      }
     }
   </style>
 </head>
 <body>
-  <div style="display: flex; gap: 15px; align-items: center;">
+  <div style="display: flex; gap: 15px; align-items: center; position: fixed; bottom: 20px; left: 20px; z-index: 100;">
     <!-- Instagram -->
     <a href="https://www.instagram.com/sreeharsh_25" target="_blank">
-      <i class="fab fa-instagram fa-2x" style="color:#E1306C;"></i>
+      <i class="fab fa-instagram fa-2x" style="color:var(--spider-pink);"></i>
     </a>
   
     <!-- LinkedIn -->
-    <a href="www.linkedin.com/in/sreeharsh-e-k-428882246" target="_blank">
-      <i class="fab fa-linkedin fa-2x" style="color:#0077B5;"></i>
+    <a href="https://www.linkedin.com/in/sreeharsh-e-k-428882246" target="_blank">
+      <i class="fab fa-linkedin fa-2x" style="color:var(--spider-blue);"></i>
     </a>
   
     <!-- Email -->
     <a href="mailto:sreeharsh121@gmail.com">
-      <i class="fas fa-envelope fa-2x" style="color:#333;"></i>
+      <i class="fas fa-envelope fa-2x" style="color:var(--spider-text);"></i>
     </a>
   </div>
   
@@ -163,58 +335,37 @@
 
   <section id="home" class="section hero" data-aos="fade-up">
     <h1>Hi, I'm <span class="highlight">Sreeharsh</span></h1>
-    <p>I build digital experiences with a techy touch.</p>
-    <!DOCTYPE html>
-<html>
-<head>
-  <title>My personal Website</title>
-  <style>
-  .circle-image {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-    margin: 20px auto;
-    display: block;
-  }
-</style>
-<img src="images/photo.jpg" alt="My Stylish Photo" class="circle-image">
+    <p>I build digital experiences with a <span style="color:var(--spider-blue)">Spider-Verse</span> touch.</p>
 
-</head>
-<body>
-  <h1>Welcome to My Personal Website</h1>
-
-  <!-- Option 2: Circular profile image -
-  <img src="images/photo.jpg" alt="My Stylish Photo" class="circle-image"> 
-
-</body>
-</html>
-
-    <a href="#contact" class="btn">Get In Touch</a>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: 30px;">
+      <img src="IMG_20230908_092223_493.jpg" alt="My Photo" class="premium-image" style="width: 250px; border-radius: 20px;" />
+      <a href="#contact" class="btn">Get In Touch</a>
+    </div>
   </section>
 
   <section id="about" class="section" data-aos="fade-right">
     <h2>About Me</h2>
-    <p>I'm a tech enthusiast with a passion for development, design, and creating elegant user experiences. Currently learning and growing every day.</p>
+    <p>I'm a tech enthusiast with a passion for development, design, and creating elegant user experiences. Currently learning and growing every day in this vast <span style="color:var(--spider-pink)">multiverse</span> of web technologies.</p>
   </section>
 
   <section id="projects" class="section" data-aos="zoom-in">
     <h2>Projects</h2>
-    <p>More projects coming soon... stay tuned!</p>
+    <p>More projects coming soon... <span style="color:var(--spider-blue)">stay tuned!</span></p>
   </section>
 
   <section id="contact" class="section" data-aos="fade-left">
     <h2>Contact</h2>
-    <p>Let's connect!</p>
+    <p>Let's connect across the spider-verse!</p>
     <div class="socials">
       <a href="mailto:sreeharshek121@gmail.com"><i class="fas fa-envelope"></i></a>
       <a href="https://www.linkedin.com/in/sreeharsh-e-k-428882246" target="_blank"><i class="fab fa-linkedin"></i></a>
     </div>
   </section>
 
+  <div class="spider-spray">MILES WAS HERE</div>
+
   <footer>
-    <p>© 2025 Sreeharsh E K. All rights reserved.</p>
+    <p>© 2025 Sreeharsh E K. All rights reserved. <span style="color:var(--spider-pink)">Spider-Verse mode activated</span></p>
   </footer>
 
   <!-- AOS Script -->
@@ -224,8 +375,19 @@
       duration: 1000,
       once: true
     });
+
+    // Add random comic dots
+    document.addEventListener('DOMContentLoaded', () => {
+      for (let i = 0; i < 50; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('comic-dot');
+        dot.style.width = `${Math.random() * 10 + 2}px`;
+        dot.style.height = dot.style.width;
+        dot.style.left = `${Math.random() * 100}vw`;
+        dot.style.top = `${Math.random() * 100}vh`;
+        document.body.appendChild(dot);
+      }
+    });
   </script>
 </body>
-</html>
-
 </html>
