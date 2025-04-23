@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sreeharsh E K - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  
+  <!-- Fonts + AOS + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #0d0d0d;
+      color: #d6c7ae;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: #1a1a1a;
+      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5em;
+      color: #e8dfca;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #d6c7ae;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #fff;
+    }
+
+    .section {
+      padding: 100px 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .hero {
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      color: #c8a96b;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      border: 2px solid #c8a96b;
+      color: #c8a96b;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #c8a96b;
+      color: #0d0d0d;
+    }
+
+    .socials a {
+      font-size: 1.5em;
+      margin: 0 10px;
+      color: #d6c7ae;
+      transition: color 0.3s;
+    }
+
+    .socials a:hover {
+      color: #fff;
+    }
+
+    footer {
+      background: #1a1a1a;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+
+    h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #e3d5b8;
+    }
+
+    p {
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+  <div style="display: flex; gap: 15px; align-items: center;">
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/sreeharsh_25" target="_blank">
+      <i class="fab fa-instagram fa-2x" style="color:#E1306C;"></i>
+    </a>
+  
+    <!-- LinkedIn -->
+    <a href="www.linkedin.com/in/sreeharsh-e-k-428882246" target="_blank">
+      <i class="fab fa-linkedin fa-2x" style="color:#0077B5;"></i>
+    </a>
+  
+    <!-- Email -->
+    <a href="mailto:sreeharsh121@gmail.com">
+      <i class="fas fa-envelope fa-2x" style="color:#333;"></i>
+    </a>
+  </div>
+  
+  <header>
+    <nav>
+      <div class="logo">SREEHARSH E K</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="section hero" data-aos="fade-up">
+    <h1>Hi, I'm <span class="highlight">Sreeharsh</span></h1>
+    <p>I build digital experiences with a techy touch.</p>
+    <!DOCTYPE html>
+<html>
+<head>
+  <title>My personal Website</title>
+  <style>
+    .premium-image {
+      width: 300px;
+      border-radius: 20px; /* for rounded corners */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* soft shadow */
+      transition: transform 0.3s ease;
+    }
+
+    .premium-image:hover {
+      transform: scale(1.05); /* zoom on hover */
+    }
+
+    /* For a circular profile image, use this instead: */
+    .circle-image {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to My Premium Website</h1>
+  
+  <!-- Option 1: Rounded rectangle image -->
+  <img src="IMG_20230908_092223_493.jpg" alt="My Photo" class="premium-image">
+  <a href="#contact" class="btn">Get In Touch</a>
+
+  <!-- Option 2: Circular profile image -
+  <!-- <img src="images/photo.jpg" alt="My Stylish Photo" class="circle-image"> -->
+
+</body>
+</html>
+
+    <a href="#contact" class="btn">Get In Touch</a>
+  </section>
+
+  <section id="about" class="section" data-aos="fade-right">
+    <h2>About Me</h2>
+    <p>I'm a tech enthusiast with a passion for development, design, and creating elegant user experiences. Currently learning and growing every day.</p>
+  </section>
+
+  <section id="projects" class="section" data-aos="zoom-in">
+    <h2>Projects</h2>
+    <p>More projects coming soon... stay tuned!</p>
+  </section>
+
+  <section id="contact" class="section" data-aos="fade-left">
+    <h2>Contact</h2>
+    <p>Let's connect!</p>
+    <div class="socials">
+      <a href="mailto:sreeharshek121@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/sreeharsh-e-k-428882246" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Sreeharsh E K. All rights reserved.</p>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+</body>
+</html>
