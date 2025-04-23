@@ -7,17 +7,17 @@
   
   <!-- Fonts + Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
     :root {
-      --spider-pink: #ff00ff;
-      --spider-blue: #00ffff;
-      --spider-red: #ff3131;
+      --spider-blue: #00f7ff;
+      --spider-pink: #ff38e4;
       --spider-purple: #8a2be2;
-      --spider-bg: #0d0d0d;
-      --spider-text: #e8e6e3;
+      --spider-bg: #0a0a12;
+      --spider-text: #f0f0f0;
+      --spider-accent: #ff3131;
     }
 
     * {
@@ -27,25 +27,66 @@
     }
 
     body {
-      font-family: 'Bangers', cursive;
+      font-family: 'Orbitron', sans-serif;
       background-color: var(--spider-bg);
       color: var(--spider-text);
       line-height: 1.6;
       scroll-behavior: smooth;
-      letter-spacing: 1px;
+      overflow-x: hidden;
       background-image: 
-        radial-gradient(circle at 10% 20%, rgba(255, 0, 255, 0.03) 0%, transparent 20%),
-        radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.03) 0%, transparent 20%);
+        radial-gradient(circle at 20% 30%, rgba(0, 247, 255, 0.05) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(255, 56, 228, 0.05) 0%, transparent 25%);
     }
 
+    /* === ANIMATED BACKGROUND === */
+    .spider-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(rgba(10, 10, 18, 0.9), rgba(10, 10, 18, 0.95)),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="1" height="1" fill="rgba(0,247,255,0.1)"/></svg>');
+      background-size: 20px 20px;
+      z-index: -2;
+      opacity: 0.8;
+    }
+
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background: var(--spider-blue);
+      border-radius: 50%;
+      opacity: 0;
+      animation: float 15s infinite linear;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      10% { opacity: 0.1; }
+      50% { transform: translateY(-100vh) translateX(100px); opacity: 0.3; }
+      100% { transform: translateY(-200vh) translateX(200px); opacity: 0; }
+    }
+
+    /* === HEADER === */
     header {
-      background: linear-gradient(90deg, #1a1a1a, #2a0a2a);
+      background: rgba(26, 26, 26, 0.8);
+      backdrop-filter: blur(10px);
       padding: 20px 40px;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 15px rgba(138, 43, 226, 0.3);
-      border-bottom: 2px dashed var(--spider-blue);
+      box-shadow: 0 2px 20px rgba(0, 247, 255, 0.1);
+      border-bottom: 1px solid rgba(0, 247, 255, 0.2);
     }
 
     nav {
@@ -55,32 +96,31 @@
     }
 
     .logo {
-      font-family: 'Rubik Wet Paint', cursive;
+      font-family: 'Orbitron', sans-serif;
       font-size: 1.8em;
+      font-weight: 700;
       color: var(--spider-blue);
       letter-spacing: 2px;
-      text-shadow: 
-        3px 3px 0 var(--spider-purple),
-        5px 5px 0 #000;
+      text-shadow: 0 0 10px var(--spider-blue);
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 25px;
+      gap: 30px;
     }
 
     nav ul li a {
       text-decoration: none;
       color: var(--spider-text);
-      font-size: 1.2em;
+      font-size: 1.1em;
       transition: all 0.3s;
       position: relative;
+      padding: 5px 0;
     }
 
     nav ul li a:hover {
       color: var(--spider-pink);
-      text-shadow: 0 0 10px var(--spider-pink);
     }
 
     nav ul li a::after {
@@ -88,48 +128,48 @@
       position: absolute;
       width: 0;
       height: 2px;
-      bottom: -5px;
+      bottom: 0;
       left: 0;
-      background-color: var(--spider-blue);
-      transition: width 0.3s;
+      background: linear-gradient(90deg, var(--spider-blue), var(--spider-pink));
+      transition: width 0.4s ease-out;
     }
 
     nav ul li a:hover::after {
       width: 100%;
     }
 
+    /* === SECTIONS === */
     .section {
-      padding: 100px 40px;
-      max-width: 900px;
+      padding: 120px 40px;
+      max-width: 1000px;
       margin: auto;
       position: relative;
     }
 
-    .section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('https://www.transparenttextures.com/patterns/cartographer.png');
-      opacity: 0.05;
-      pointer-events: none;
-      z-index: -1;
-    }
-
     .hero {
       text-align: center;
+      position: relative;
     }
 
     .hero h1 {
-      font-size: 4em;
-      margin-bottom: 10px;
-      line-height: 1;
+      font-size: 4.5em;
+      margin-bottom: 20px;
+      line-height: 1.1;
+      background: linear-gradient(45deg, var(--spider-blue), var(--spider-pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+    }
+
+    .hero p {
+      font-size: 1.5em;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      opacity: 0.9;
     }
 
     .highlight {
-      color: var(--spider-pink);
       position: relative;
       display: inline-block;
     }
@@ -141,10 +181,10 @@
       height: 3px;
       bottom: 5px;
       left: 0;
-      background: linear-gradient(90deg, var(--spider-pink), var(--spider-blue));
+      background: linear-gradient(90deg, var(--spider-blue), var(--spider-pink));
       transform: scaleX(0);
       transform-origin: right;
-      transition: transform 0.5s;
+      transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     }
 
     .highlight:hover::after {
@@ -152,175 +192,180 @@
       transform-origin: left;
     }
 
+    /* === BUTTON === */
     .btn {
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background: linear-gradient(45deg, var(--spider-purple), var(--spider-pink));
+      margin-top: 30px;
+      padding: 15px 35px;
+      background: linear-gradient(45deg, var(--spider-blue), var(--spider-purple));
       color: white;
       text-decoration: none;
-      border-radius: 30px;
-      font-size: 1.1em;
+      border-radius: 50px;
+      font-size: 1.2em;
+      font-weight: 500;
       border: none;
       cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+      transition: all 0.4s;
+      box-shadow: 0 5px 25px rgba(0, 247, 255, 0.3);
       position: relative;
       overflow: hidden;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(138, 43, 226, 0.6);
+      z-index: 1;
     }
 
     .btn::before {
       content: '';
       position: absolute;
       top: 0;
-      left: -100%;
+      left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: 0.5s;
+      background: linear-gradient(45deg, var(--spider-purple), var(--spider-pink));
+      opacity: 0;
+      transition: opacity 0.4s;
+      z-index: -1;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(255, 56, 228, 0.4);
     }
 
     .btn:hover::before {
-      left: 100%;
+      opacity: 1;
     }
 
-    .socials a {
+    /* === PROJECT IMAGE === */
+    .premium-image {
+      width: 280px;
+      border-radius: 15px;
+      border: 2px solid rgba(0, 247, 255, 0.5);
+      box-shadow: 
+        0 0 30px rgba(0, 247, 255, 0.2),
+        0 0 60px rgba(255, 56, 228, 0.1);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      margin-bottom: 30px;
+    }
+
+    .premium-image:hover {
+      transform: scale(1.05) rotate(-2deg);
+      box-shadow: 
+        0 0 40px rgba(0, 247, 255, 0.3),
+        0 0 80px rgba(255, 56, 228, 0.2);
+      border-color: var(--spider-pink);
+    }
+
+    /* === SOCIAL ICONS === */
+    .social-icons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .social-icons a {
       font-size: 1.8em;
-      margin: 0 15px;
       color: var(--spider-text);
       transition: all 0.3s;
       display: inline-block;
     }
 
-    .socials a:hover {
+    .social-icons a:hover {
       color: var(--spider-blue);
       transform: translateY(-5px) scale(1.1);
+      text-shadow: 0 0 15px var(--spider-blue);
     }
 
-    footer {
-      background: linear-gradient(90deg, #1a1a1a, #2a0a2a);
-      text-align: center;
-      padding: 20px;
-      font-size: 1em;
-      border-top: 2px dashed var(--spider-pink);
-    }
-
+    /* === HEADINGS === */
     h2 {
-      font-size: 3em;
+      font-size: 3.5em;
       margin-bottom: 30px;
-      color: var(--spider-blue);
-      text-shadow: 3px 3px 0 var(--spider-purple);
-      letter-spacing: 2px;
+      background: linear-gradient(45deg, var(--spider-blue), var(--spider-pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+      display: inline-block;
     }
 
     h2::after {
       content: '';
       display: block;
-      width: 100px;
+      width: 150px;
       height: 4px;
-      background: linear-gradient(90deg, var(--spider-pink), var(--spider-blue));
-      margin-top: 10px;
+      background: linear-gradient(90deg, var(--spider-blue), var(--spider-pink));
+      margin-top: 15px;
+      border-radius: 2px;
     }
 
     p {
       font-size: 1.3em;
       line-height: 1.7;
+      opacity: 0.9;
+      margin-bottom: 20px;
     }
 
-    /* Spider-Verse specific elements */
-    .spider-spray {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      font-family: 'Rubik Wet Paint', cursive;
-      color: white;
-      font-size: 1.5rem;
-      transform: rotate(-10deg);
-      text-shadow: 
-        2px 2px 0 var(--spider-purple),
-        4px 4px 0 #000;
-      opacity: 0.8;
-      z-index: 100;
+    /* === FOOTER === */
+    footer {
+      background: rgba(26, 26, 26, 0.8);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      padding: 25px;
+      font-size: 1em;
+      border-top: 1px solid rgba(0, 247, 255, 0.2);
     }
 
-    .premium-image {
-      border: 3px solid var(--spider-blue);
-      box-shadow: 
-        0 0 20px var(--spider-pink),
-        0 0 40px rgba(0, 255, 255, 0.3);
-      transition: all 0.5s;
-    }
-
-    .premium-image:hover {
-      transform: scale(1.05);
-      box-shadow: 
-        0 0 30px var(--spider-pink),
-        0 0 60px rgba(0, 255, 255, 0.5);
-    }
-
-    /* Glitch effect for section headings */
+    /* === GLITCH EFFECT (on hover) === */
     @keyframes glitch {
-      0% { transform: translate(0); }
-      20% { transform: translate(-3px, 3px); }
-      40% { transform: translate(-3px, -3px); }
-      60% { transform: translate(3px, 3px); }
-      80% { transform: translate(3px, -3px); }
-      100% { transform: translate(0); }
+      0% { text-shadow: 2px 0 var(--spider-blue), -2px 0 var(--spider-pink); }
+      25% { text-shadow: -3px 0 var(--spider-pink), 3px 0 var(--spider-blue); }
+      50% { text-shadow: 2px 0 var(--spider-purple), -2px 0 var(--spider-blue); }
+      75% { text-shadow: -3px 0 var(--spider-blue), 3px 0 var(--spider-purple); }
+      100% { text-shadow: 2px 0 var(--spider-pink), -2px 0 var(--spider-blue); }
     }
 
     h2:hover {
-      animation: glitch 0.5s linear;
-      color: var(--spider-pink);
+      animation: glitch 0.8s linear infinite;
     }
 
-    /* Comic dots background */
-    .comic-dot {
-      position: absolute;
-      background: white;
-      border-radius: 50%;
-      opacity: 0.05;
-      z-index: -1;
-    }
-
-    /* Responsive adjustments */
+    /* === RESPONSIVE DESIGN === */
     @media (max-width: 768px) {
       .hero h1 {
-        font-size: 2.5em;
+        font-size: 2.8em;
       }
       
       h2 {
-        font-size: 2em;
+        font-size: 2.5em;
       }
       
       nav ul {
         gap: 15px;
       }
+      
+      .section {
+        padding: 80px 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <div style="display: flex; gap: 15px; align-items: center; position: fixed; bottom: 20px; left: 20px; z-index: 100;">
-    <!-- Instagram -->
+  <!-- Animated Background Elements -->
+  <div class="spider-grid"></div>
+  <div class="particles" id="particles"></div>
+  
+  <!-- Social Icons (Fixed) -->
+  <div class="social-icons" style="position: fixed; bottom: 30px; left: 30px; z-index: 100;">
     <a href="https://www.instagram.com/sreeharsh_25" target="_blank">
-      <i class="fab fa-instagram fa-2x" style="color:var(--spider-pink);"></i>
+      <i class="fab fa-instagram" style="color: var(--spider-pink);"></i>
     </a>
-  
-    <!-- LinkedIn -->
     <a href="https://www.linkedin.com/in/sreeharsh-e-k-428882246" target="_blank">
-      <i class="fab fa-linkedin fa-2x" style="color:var(--spider-blue);"></i>
+      <i class="fab fa-linkedin" style="color: var(--spider-blue);"></i>
     </a>
-  
-    <!-- Email -->
     <a href="mailto:sreeharsh121@gmail.com">
-      <i class="fas fa-envelope fa-2x" style="color:var(--spider-text);"></i>
+      <i class="fas fa-envelope" style="color: var(--spider-text);"></i>
     </a>
   </div>
   
+  <!-- Header -->
   <header>
     <nav>
       <div class="logo">SREEHARSH E K</div>
@@ -333,39 +378,42 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section id="home" class="section hero" data-aos="fade-up">
     <h1>Hi, I'm <span class="highlight">Sreeharsh</span></h1>
-    <p>I build digital experiences with a <span style="color:var(--spider-blue)">Spider-Verse</span> touch.</p>
+    <p>I build digital experiences with a <span style="color: var(--spider-blue)">multiverse</span> of creativity.</p>
 
     <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: 30px;">
-      <img src="IMG_20230908_092223_493.jpg" alt="My Photo" class="premium-image" style="width: 250px; border-radius: 20px;" />
+      <img src="IMG_20230908_092223_493.jpg" alt="My Photo" class="premium-image" />
       <a href="#contact" class="btn">Get In Touch</a>
     </div>
   </section>
 
+  <!-- About Section -->
   <section id="about" class="section" data-aos="fade-right">
     <h2>About Me</h2>
-    <p>I'm a tech enthusiast with a passion for development, design, and creating elegant user experiences. Currently learning and growing every day in this vast <span style="color:var(--spider-pink)">multiverse</span> of web technologies.</p>
+    <p>I'm a tech enthusiast with a passion for development, design, and creating elegant user experiences. Currently exploring the vast <span style="color: var(--spider-pink)">cosmos of web technologies</span>.</p>
   </section>
 
+  <!-- Projects Section -->
   <section id="projects" class="section" data-aos="zoom-in">
     <h2>Projects</h2>
-    <p>More projects coming soon... <span style="color:var(--spider-blue)">stay tuned!</span></p>
+    <p>More projects coming soon... <span style="color: var(--spider-blue)">watch this space!</span></p>
   </section>
 
+  <!-- Contact Section -->
   <section id="contact" class="section" data-aos="fade-left">
     <h2>Contact</h2>
-    <p>Let's connect across the spider-verse!</p>
-    <div class="socials">
+    <p>Let’s create something amazing together.</p>
+    <div class="social-icons">
       <a href="mailto:sreeharshek121@gmail.com"><i class="fas fa-envelope"></i></a>
       <a href="https://www.linkedin.com/in/sreeharsh-e-k-428882246" target="_blank"><i class="fab fa-linkedin"></i></a>
     </div>
   </section>
 
-  <div class="spider-spray">MILES WAS HERE</div>
-
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Sreeharsh E K. All rights reserved. <span style="color:var(--spider-pink)">Spider-Verse mode activated</span></p>
+    <p>© 2025 Sreeharsh E K. All rights reserved.</p>
   </footer>
 
   <!-- AOS Script -->
@@ -376,17 +424,37 @@
       once: true
     });
 
-    // Add random comic dots
-    document.addEventListener('DOMContentLoaded', () => {
-      for (let i = 0; i < 50; i++) {
-        const dot = document.createElement('div');
-        dot.classList.add('comic-dot');
-        dot.style.width = `${Math.random() * 10 + 2}px`;
-        dot.style.height = dot.style.width;
-        dot.style.left = `${Math.random() * 100}vw`;
-        dot.style.top = `${Math.random() * 100}vh`;
-        document.body.appendChild(dot);
+    // Particle Background
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 30;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random size (2px to 5px)
+        const size = Math.random() * 3 + 2;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Random position
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.bottom = `-10px`;
+        
+        // Random animation delay
+        particle.style.animationDelay = `${Math.random() * 15}s`;
+        
+        // Random color (blue or pink)
+        particle.style.background = Math.random() > 0.5 ? 'var(--spider-blue)' : 'var(--spider-pink)';
+        
+        particlesContainer.appendChild(particle);
       }
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      createParticles();
     });
   </script>
 </body>
