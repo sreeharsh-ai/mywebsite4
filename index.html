@@ -26,17 +26,17 @@
       box-sizing: border-box;
     }
 
-    /* === ENHANCED ANIMATED BACKGROUND === */
     body {
       font-family: 'Orbitron', sans-serif;
       color: var(--spider-text);
       line-height: 1.6;
       scroll-behavior: smooth;
       overflow-x: hidden;
+      background-color: #000;
       position: relative;
-      background: #000;
     }
 
+    /* === WORKING ANIMATED BACKGROUND === */
     #spider-bg {
       position: fixed;
       top: 0;
@@ -44,25 +44,33 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: 
-        linear-gradient(135deg, #0a0a0a 0%, #1a0a2a 100%);
+      background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
       overflow: hidden;
     }
 
     .spider-particle {
       position: absolute;
       border-radius: 50%;
-      animation: float 15s infinite linear;
-      opacity: 0.7;
-      filter: blur(1px);
+      background: white;
+      animation: float linear infinite;
+      opacity: 0;
     }
 
     @keyframes float {
-      0% { transform: translateY(0) translateX(0); opacity: 0; }
-      20% { opacity: 0.8; }
-      50% { transform: translateY(-100vh) translateX(100px); }
-      80% { opacity: 0.5; }
-      100% { transform: translateY(-200vh) translateX(200px); opacity: 0; }
+      0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-20vh) translateX(100px);
+        opacity: 0;
+      }
     }
 
     /* === YOUR ORIGINAL STYLES (UNTOUCHED) === */
@@ -328,7 +336,7 @@
   </style>
 </head>
 <body>
-  <!-- Enhanced Animated Background -->
+  <!-- Working Animated Background -->
   <div id="spider-bg"></div>
   
   <!-- Social Icons (Fixed) -->
@@ -398,64 +406,55 @@
   <!-- AOS Script -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    // Initialize AOS
     AOS.init({
       duration: 1000,
       once: true
     });
 
-    // Enhanced Particle Background
+    // Working Particle Background
     function createParticles() {
       const bg = document.getElementById('spider-bg');
       const colors = ['#00f7ff', '#ff38e4', '#8a2be2', '#ff3131', '#00ff88'];
-      const particleCount = 80; // Increased number of particles
+      const particleCount = 60;
+      
+      // Clear existing particles
+      bg.innerHTML = '';
       
       for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
-        particle.classList.add('spider-particle');
+        particle.className = 'spider-particle';
         
         // Random properties
-        const size = Math.random() * 8 + 3; // Larger particles
+        const size = Math.random() * 5 + 2;
         const color = colors[Math.floor(Math.random() * colors.length)];
-        const duration = Math.random() * 20 + 10;
+        const duration = Math.random() * 15 + 10;
         const delay = Math.random() * 15;
-        const blur = Math.random() * 3 + 1;
+        const left = Math.random() * 100;
         
         // Apply styles
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.background = color;
-        particle.style.left = `${Math.random() * 100}vw`;
-        particle.style.top = `${Math.random() * 100}vh`;
-        particle.style.animationDuration = `${duration}s`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.filter = `blur(${blur}px)`;
-        
-        // Glow effect
-        particle.style.boxShadow = `0 0 ${size*3}px ${size/2}px ${color}80`;
+        particle.style.cssText = `
+          width: ${size}px;
+          height: ${size}px;
+          background: ${color};
+          left: ${left}vw;
+          animation-duration: ${duration}s;
+          animation-delay: ${delay}s;
+          opacity: 0;
+          box-shadow: 0 0 ${size*2}px ${size/2}px ${color};
+        `;
         
         bg.appendChild(particle);
       }
-
-      // Add some larger, slower-moving particles
-      for (let i = 0; i < 5; i++) {
-        const bigParticle = document.createElement('div');
-        bigParticle.classList.add('spider-particle');
-        bigParticle.style.width = '15px';
-        bigParticle.style.height = '15px';
-        bigParticle.style.background = colors[i % colors.length];
-        bigParticle.style.left = `${Math.random() * 100}vw`;
-        bigParticle.style.top = `${Math.random() * 100}vh`;
-        bigParticle.style.animationDuration = '30s';
-        bigParticle.style.animationDelay = `${Math.random() * 10}s`;
-        bigParticle.style.opacity = '0.4';
-        bigParticle.style.filter = 'blur(2px)';
-        bigParticle.style.boxShadow = `0 0 30px 8px ${colors[i % colors.length]}80`;
-        bg.appendChild(bigParticle);
-      }
     }
 
-    // Initialize
-    document.addEventListener('DOMContentLoaded', createParticles);
+    // Initialize on load
+    window.addEventListener('load', () => {
+      createParticles();
+      
+      // Refresh particles every 30 seconds to prevent memory issues
+      setInterval(createParticles, 30000);
+    });
   </script>
 </body>
 </html>
